@@ -1,0 +1,12 @@
+[2025-09-12 12:45:10] API_REQUEST - IP: 127.0.0.1 - User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36 - Details: Method: GET, Endpoint: projects
+[2025-09-12 12:45:10] API_REQUEST - IP: 127.0.0.1 - User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36 - Details: Method: GET, Endpoint: blog
+[2025-09-12 12:46:29] API_REQUEST - IP: 127.0.0.1 - User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36 - Details: Method: POST, Endpoint: auth
+[2025-09-12 12:46:29] LOGIN_SUCCESS - IP: 127.0.0.1 - User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36 - Details: User: admin
+[2025-09-12 20:12:15] API_REQUEST - IP: ::1 - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 - Details: Method: GET, Endpoint: blog
+[2025-09-12 20:12:15] API_REQUEST - IP: ::1 - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 - Details: Method: GET, Endpoint: projects
+[2025-09-12 20:15:02] API_REQUEST - IP: ::1 - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 - Details: Method: POST, Endpoint: auth
+[2025-09-12 20:15:02] LOGIN_SUCCESS - IP: ::1 - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 - Details: User: admin
+[2025-09-12 20:16:06] API_REQUEST - IP: ::1 - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 - Details: Method: POST, Endpoint: auth
+[2025-09-12 20:16:06] 2FA_FAILED - IP: ::1 - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 - Details: Invalid 2FA code
+[2025-09-12 20:19:48] API_REQUEST - IP: ::1 - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 - Details: Method: GET, Endpoint: projects
+[2025-09-12 20:19:48] API_REQUEST - IP: ::1 - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 - Details: Method: GET, Endpoint: blog
