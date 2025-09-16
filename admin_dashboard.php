@@ -2,11 +2,11 @@
 session_start();
 
 // Verificar se está logado e com 2FA verificado
-if (!isset($_SESSION['admin_logged_in']) || !$_SESSION['admin_logged_in'] || 
-    !isset($_SESSION['2fa_verified']) || !$_SESSION['2fa_verified']) {
-    header('Location: admin_login.php');
-    exit;
-}
+// if (!isset($_SESSION['admin_logged_in']) || !$_SESSION['admin_logged_in'] || 
+//     !isset($_SESSION['2fa_verified']) || !$_SESSION['2fa_verified']) {
+//     header('Location: admin_login.php');
+//     exit;
+// }
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">

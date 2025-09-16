@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Efeito de digitação para mensagem de boas-vindas
 function initializeTypeWriter() {
     const welcomeMessage = document.getElementById('welcome-message');
-    const message = 'Bem-vindo ao meu portfólio mágico! ✨';
+    const message = 'Bem-vindo ao meu portfólio mágico!';
     let i = 0;
     
     welcomeMessage.innerHTML = '';
@@ -92,9 +92,7 @@ function initializeMusicControls() {
     const pauseMusicBtn = document.getElementById('pause-music');
     const volumeControl = document.getElementById('volume-control');
     
-    // Configurar música de fundo (usando um arquivo de exemplo)
-    // Nota: Em produção, você deve adicionar um arquivo de música real
-    backgroundMusic.src = 'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav';
+    backgroundMusic.src = 'music/music_bg.wav';
     backgroundMusic.volume = 0.3;
     
     playMusicBtn.addEventListener('click', function() {

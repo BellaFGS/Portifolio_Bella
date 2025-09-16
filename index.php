@@ -142,7 +142,7 @@
 
     <audio id="background-music" loop>
         <!-- Adicione sua música de fundo aqui -->
-        <source src="" type="audio/mpeg">
+        <source src="" type="audio/wav">
     </audio>
     <div class="music-controls">
         <button id="play-music">Play</button>
