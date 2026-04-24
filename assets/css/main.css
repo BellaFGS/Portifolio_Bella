@@ -1,6 +1,7 @@
 /*! normalize.css v7.0.0 | MIT License | github.com/necolas/normalize.css */
-@import url(https://fonts.googleapis.com/css?family=Nunito+Sans);
+/* @import url(https://fonts.googleapis.com/css?family=Nunito+Sans); */
 @import url(https://fonts.googleapis.com/css?family=Rubik);
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 html {
     line-height: 1.15;
@@ -14,7 +15,7 @@ body {
     font-size: 100%;
     line-height: 1.5;
     color: #555;
-    font-family: 'Nunito Sans', sans-serif
+    font-family: 'Montserrat', sans-serif
 }
 
 article,
@@ -4821,11 +4822,11 @@ a img {
 }
 
 #particles-js {
-    background: #1488CC;
+    background: #ddff00;
     /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #2B32B2, #1488CC);
+    background: -webkit-linear-gradient(to right, #a911cf, #ffffff);
     /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #2B32B2, #1488CC);
+    background: linear-gradient(to right, #c11adb, #eeff00);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
     display: flex;
@@ -4857,7 +4858,7 @@ a img {
 }
 
 .header .site-title {
-    font-size: 35px;
+    font-size: 20px !important;
     display: block;
     line-height: 1;
     color: #fff;
@@ -4871,7 +4872,7 @@ a img {
 }
 
 .header .site-description {
-    font-size: 20px;
+    font-size: 10px !important;
     display: block;
     line-height: 1;
     color: #fff;
