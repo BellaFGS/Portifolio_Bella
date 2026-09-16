@@ -1,288 +1,315 @@
-# 🎮 Portfólio Web Interativo
+# ByteBloom — Portfólio Pessoal
 
-Um portfólio web completo e interativo com design inspirado em jogos indie, sistema de autenticação 2FA e área administrativa para gerenciamento de conteúdo.
+Portfólio pessoal responsivo para apresentar experiências em desenvolvimento front-end, criação de jogos, pixel art e automação. O projeto combina uma estética inspirada em jogos clássicos com uma identidade visual baseada em girassóis, amarelo vibrante, verde natural e tipografia pixelada.
 
-## ✨ Características Principais
+A aplicação é uma interface estática executada no navegador. Não utiliza banco de dados, autenticação ou API própria. O projeto usa **React com Vite e TypeScript** na estrutura de desenvolvimento, além de CSS customizado e JavaScript para as interações visuais.
 
-### 🎨 Design e Estética
-- **Tema**: Inspirado em jogos indie (Stardew Valley, galáxia, girassóis, gatos pretos)
-- **Paleta de Cores**:
-  - Roxo: `rgb(37, 30, 82)`
-  - Amarelo: `rgb(199, 161, 98)`
-  - Azul claro: `rgb(73, 119, 157)`
-  - Azul escuro: `rgb(23, 34, 101)`
-  - Vermelho: `rgb(195, 70, 75)`
-- **Efeitos Visuais**: Sombras suaves, gradientes, animações, efeito de estrelas
-- **Responsividade**: Compatível com desktop, notebook e celular
+## Visão geral
 
-### 🚀 Funcionalidades Interativas
-- **Animação de digitação** na mensagem de boas-vindas
-- **Efeito de borboletas** animadas ao clicar na tela
-- **Música de fundo** com controles de volume
-- **Navegação suave** entre seções
-- **Filtros dinâmicos** para projetos e blog
-- **Gráfico de skills** animado com HTML/CSS/JS
+O site contém as seguintes áreas:
 
-### 🔐 Sistema de Segurança
-- **Autenticação 2FA** para administradores
-- **Criptografia SHA256** para senhas
-- **Proteção CSRF** em todas as operações
-- **Headers de segurança** configurados
-- **Sistema de logs** para auditoria
-- **Validação de entrada** em todos os formulários
+- Hero com apresentação pessoal, chamada para download do currículo e links sociais.
 
-### 📝 Área Administrativa
-- **Dashboard completo** com estatísticas
-- **CRUD para blog** (criar, editar, deletar posts)
-- **Gerenciamento de projetos**
-- **Filtros avançados** por categoria, nome e data
-- **Interface intuitiva** com modais e notificações
+- Seção “Sobre mim” com resumo profissional e indicadores.
 
-## 🛠️ Tecnologias Utilizadas
+- Projetos em destaque apresentados como fases de um jogo.
 
-### Frontend
-- **HTML5** - Estrutura semântica
-- **CSS3** - Estilos avançados com gradientes e animações
-- **JavaScript ES6+** - Interatividade e comunicação com API
+- Linha do tempo com experiências profissionais e formação.
 
-### Backend
-- **PHP 8.1+** - Lógica do servidor
-- **SQLite** - Banco de dados leve e prático
-- **API RESTful** - Comunicação frontend-backend
+- Cursos, certificações, hobbies e interesses.
 
-### Segurança
-- **Autenticação 2FA** - Verificação em duas etapas
-- **CSRF Protection** - Proteção contra ataques CSRF
-- **Input Validation** - Validação rigorosa de dados
-- **Security Headers** - Headers de segurança HTTP
+- Seção de contato com link de e-mail.
 
-## 📁 Estrutura do Projeto
+- Menu hambúrguer para telas menores.
+
+- Alternador entre tema escuro e tema claro.
+
+- Animações suaves de entrada durante a rolagem.
+
+O conteúdo atual possui textos, links e dados de exemplo. Substitua esses valores pelos seus dados antes de publicar o site.
+
+## Requisitos
+
+Para executar o projeto localmente, instale:
+
+- [Node.js](https://nodejs.org/) versão 18 ou superior.
+
+- [pnpm](https://pnpm.io/) versão 9 ou superior. Também é possível usar `npm` ou `yarn`, adaptando os comandos.
+
+- Git, caso o projeto seja baixado de um repositório.
+
+Confira as versões instaladas:
+
+```bash
+node --version
+pnpm --version
+```
+
+## Executar em localhost
+
+### 1. Clonar o repositório
+
+Se o projeto estiver no GitHub, clone-o com:
+
+```bash
+git clone https://github.com/BellaFGS/Portifolio_BellaFGS.git
+cd SEU_REPOSITORIO
+```
+
+Se você já recebeu a pasta do projeto, abra o terminal dentro dela:
+
+```bash
+cd portfolio_bellafgs
+```
+
+### 2. Instalar as dependências
+
+```bash
+pnpm install
+```
+
+### 3. Iniciar o servidor de desenvolvimento
+
+```bash
+pnpm dev
+```
+
+O Vite exibirá um endereço semelhante a:
 
 ```
-portfolio_web/
-├── index.php                 # Página principal
-├── admin_login.php          # Login administrativo
-├── admin_dashboard.php      # Dashboard administrativo
-├── README.md               # Documentação
-├── test_results.md         # Resultados dos testes
-├── todo.md                 # Lista de tarefas
-├── frontend/
+http://localhost:3000/
+```
+
+Abra esse endereço no navegador. O servidor possui atualização automática: quando você salvar um arquivo, a página será atualizada sem precisar reiniciar o comando.
+
+Para interromper o servidor, pressione `Ctrl + C` no terminal.
+
+## Comandos disponíveis
+
+| Comando | Função |
+| --- | --- |
+| `pnpm install` | Instala as dependências do projeto. |
+| `pnpm dev` | Inicia o servidor local de desenvolvimento. |
+| `pnpm build` | Gera a versão otimizada para produção em `dist/public`. |
+| `pnpm preview` | Executa localmente a versão já compilada. |
+| `pnpm check` | Verifica erros de TypeScript. |
+| `pnpm format` | Formata os arquivos usando Prettier. |
+
+Depois de gerar a build, você pode conferir a versão de produção com:
+
+```bash
+pnpm build
+pnpm preview
+```
+
+## Estrutura principal
+
+```
+.
+├── client/
+│   ├── index.html          # Documento HTML principal
 │   ├── css/
-│   │   └── style.css       # Estilos principais
+│   │   └── style.css      # Paleta, layout, responsividade e animações
 │   ├── js/
-│   │   ├── script.js       # Scripts principais
-│   │   └── admin.js        # Scripts administrativos
-│   └── img/                # Imagens (vazio)
-├── backend/
-│   ├── db_config.php       # Configuração do banco
-│   ├── api.php             # API básica
-│   ├── secure_api.php      # API segura
-│   ├── auth.php            # Sistema de autenticação
-│   └── init_data.php       # Inicialização de dados
-├── database/
-│   └── portfolio.sqlite    # Banco de dados SQLite
-└── logs/
-    └── security.log        # Logs de segurança
+│   │   └── main.js        # Menu, tema, rolagem e interações
+│   ├── public/             # Arquivos públicos pequenos
+│   └── src/                # Estrutura React original do template
+├── dist/
+│   └── public/             # Resultado gerado pela build
+├── package.json            # Scripts e dependências
+├── vite.config.ts          # Configuração do Vite
+└── README.md               # Este manual
 ```
 
-## 🚀 Instalação e Configuração
+O site personalizado está concentrado principalmente nestes arquivos:
 
-### Pré-requisitos
-- PHP 8.1 ou superior
-- Extensões PHP: `sqlite3`, `pdo`
-- Servidor web (Apache/Nginx) ou PHP built-in server
+- `client/index.html`
 
-### Passo a Passo
+- `client/css/style.css`
 
-1. **Clone ou baixe o projeto**
-   ```bash
-   # Se usando Git
-   git clone <url-do-repositorio>
-   cd portfolio_web
-   
-   # Ou extraia o arquivo ZIP
-   unzip portfolio_web.zip
-   cd portfolio_web
-   ```
+- `client/js/main.js`
 
-2. **Verifique as permissões**
-   ```bash
-   chmod 755 database/
-   chmod 666 database/portfolio.sqlite
-   chmod 755 logs/
-   ```
+O arquivo `server/index.ts` pertence ao ambiente de desenvolvimento e não é necessário para servir o conteúdo estático no GitHub Pages.
 
-3. **Inicie o servidor**
-   ```bash
-   # Usando servidor built-in do PHP
-   php -S localhost:8080
-   
-   # Ou configure no Apache/Nginx apontando para a pasta do projeto
-   ```
+## Como personalizar o portfólio
 
-4. **Acesse o portfólio**
-   - Site principal: `http://localhost:8080`
-   - Área administrativa: `http://localhost:8080/admin_login.php`
+### Nome, título e descrição
 
-### Credenciais Padrão
-- **Usuário**: `admin`
-- **Senha**: `admin123`
-- **Código 2FA**: Será exibido na tela após o login
+Abra `client/index.html` e altere:
 
-## 📊 Banco de Dados
+- O título da página dentro da tag `<title>`.
 
-O projeto utiliza SQLite com as seguintes tabelas:
+- A descrição da meta tag `description`.
 
-### `users`
-- `id` - ID único do usuário
-- `username` - Nome de usuário
-- `password` - Senha criptografada (SHA256)
-- `two_factor_secret` - Segredo para 2FA
+- O texto `SEU NOME` no hero.
 
-### `projects`
-- `id` - ID único do projeto
-- `title` - Título do projeto
-- `description` - Descrição detalhada
-- `category` - Categoria (individual, collaboration, curricular)
-- `github_link` - Link do GitHub
-- `live_link` - Link do projeto online
+- A apresentação profissional.
 
-### `blog_posts`
-- `id` - ID único do post
-- `title` - Título do post
-- `content` - Conteúdo completo
-- `image_url` - URL da imagem
-- `category` - Categoria do post
-- `created_at` - Data de criação
+- Os textos das seções “Sobre mim”, “Projetos”, “Trajetória” e “Contato”.
 
-## 🎯 Funcionalidades Implementadas
+### Links sociais
 
-### Para Visitantes
-- ✅ Visualização do portfólio completo
-- ✅ Navegação suave entre seções
-- ✅ Filtros para projetos e blog
-- ✅ Design responsivo
-- ✅ Animações e efeitos visuais
-- ✅ Controles de música de fundo
+No arquivo `client/index.html`, procure por links como:
 
-### Para Administradores
-- ✅ Login seguro com 2FA
-- ✅ Dashboard com estatísticas
-- ✅ CRUD completo para blog
-- ✅ Gerenciamento de projetos
-- ✅ Filtros avançados
-- ✅ Sistema de notificações
-- ✅ Logs de segurança
+```html
+https://github.com/seu-usuario
+https://seu-usuario.itch.io
+https://www.instagram.com
+```
 
-## 🔧 Personalização
+Substitua-os pelos seus endereços reais. Também atualize o link do rodapé para o repositório correto.
 
-### Alterando Cores
-Edite as variáveis CSS em `frontend/css/style.css`:
+### Projetos
+
+Cada projeto está dentro de um elemento `<article class="project-card">`. Para atualizar um cartão:
+
+1. Altere o título do projeto.
+
+1. Escreva uma descrição curta e objetiva.
+
+1. Atualize as tags de tecnologia.
+
+1. Substitua os links marcados com `data-placeholder`.
+
+1. Remova o atributo `data-placeholder` depois de inserir um link real.
+
+Enquanto o atributo `data-placeholder` existir, o JavaScript impede a navegação e exibe uma mensagem informativa.
+
+### Currículo em PDF
+
+O botão principal aponta para:
+
+```
+curriculo.pdf
+```
+
+Adicione seu arquivo PDF na pasta pública usada pelo site. No projeto atual, o caminho mais simples é:
+
+```
+client/curriculo.pdf
+```
+
+Depois, confirme que o link no `client/index.html` corresponde ao local do arquivo. O nome do arquivo diferencia letras maiúsculas e minúsculas em servidores Linux.
+
+### E-mail de contato
+
+Procure por:
+
+```html
+mailto:seuemail@exemplo.com
+```
+
+Substitua pelo seu endereço de e-mail profissional.
+
+### Cores e tipografia
+
+As principais cores estão no início de `client/css/style.css`, dentro de `:root`:
+
 ```css
 :root {
-    --roxo: rgb(37, 30, 82);
-    --amarelo: rgb(199, 161, 98);
-    --azul-claro: rgb(73, 119, 157);
-    --azul-escuro: rgb(23, 34, 101);
-    --vermelho: rgb(195, 70, 75);
+  --ink: #1a1c23;
+  --panel: #242833;
+  --sun: #ffc83d;
+  --leaf: #97bc62;
 }
 ```
 
-### Adicionando Música de Fundo
-1. Adicione seu arquivo de música na pasta `frontend/`
-2. Edite `frontend/js/script.js` linha 97:
-```javascript
-backgroundMusic.src = 'frontend/sua-musica.mp3';
+Altere essas variáveis para criar outra identidade visual sem precisar editar cada componente individualmente. O tema claro possui regras específicas no seletor `.light-mode`.
+
+As fontes usadas atualmente são carregadas pelo Google Fonts em `client/index.html`:
+
+- `Press Start 2P` para títulos e detalhes retro.
+
+- `DM Sans` para textos corridos e leitura confortável.
+
+### Tema claro e escuro
+
+O alternador de tema é controlado por `client/js/main.js`. A preferência é salva no `localStorage` do navegador usando a chave `bytebloom-theme`.
+
+As cores do tema escuro ficam nas variáveis principais. As correções de contraste do tema claro ficam nos seletores que começam com `.light-mode` em `client/css/style.css`.
+
+## Publicar no GitHub Pages
+
+O comando de build gera os arquivos estáticos em:
+
+```
+dist/public/
 ```
 
-### Modificando Conteúdo
-- **Informações pessoais**: Edite `index.php`
-- **Projetos**: Use a área administrativa ou edite diretamente no banco
-- **Posts do blog**: Use a área administrativa
+Para publicar no GitHub Pages, configure um workflow do GitHub Actions para instalar as dependências, executar `pnpm build` e publicar a pasta `dist/public`.
 
-## 🛡️ Segurança
+Se o site for publicado em um repositório de projeto, como:
 
-### Medidas Implementadas
-- Autenticação 2FA obrigatória
-- Criptografia SHA256 para senhas
-- Proteção CSRF em todas as operações
-- Validação rigorosa de entrada
-- Headers de segurança HTTP
-- Sistema de logs de auditoria
-- Limitação de tentativas de login
+```
+https://seu-usuario.github.io/meu-portfolio/
+```
 
-### Recomendações para Produção
-1. **Altere as credenciais padrão**
-2. **Configure HTTPS**
-3. **Use um servidor web robusto** (Apache/Nginx)
-4. **Configure backups regulares**
-5. **Monitore os logs de segurança**
-6. **Mantenha o PHP atualizado**
+configure o `base` no `vite.config.ts`:
 
-## 📱 Responsividade
+```
+export default defineConfig({
+  base: "/meu-portfolio/",
+  // restante da configuração
+} );
+```
 
-O portfólio é totalmente responsivo com breakpoints:
-- **Desktop**: > 1200px
-- **Tablet**: 768px - 1200px
-- **Mobile**: < 768px
+Se o repositório for `seu-usuario.github.io`, normalmente o caminho-base pode ser `/`.
 
-## 🎨 Customização Visual
+Antes de publicar, gere e valide a build:
 
-### Adicionando Novos Efeitos
-O projeto está preparado para extensões:
-- Novos efeitos de partículas
-- Animações personalizadas
-- Temas alternativos
-- Modo escuro/claro
+```bash
+pnpm build
+pnpm preview
+```
 
-### Modificando Layout
-- Grid responsivo configurável
-- Componentes modulares
-- CSS bem organizado
-- Fácil manutenção
+O GitHub Pages precisa receber os arquivos gerados dentro de `dist/public`, e não o código-fonte de desenvolvimento diretamente.
 
-## 🐛 Solução de Problemas
+## Cuidados antes da publicação
 
-### Problemas Comuns
+Antes de disponibilizar o site publicamente:
 
-1. **Erro de permissão no banco de dados**
-   ```bash
-   chmod 666 database/portfolio.sqlite
-   ```
+- Substitua todos os textos entre colchetes e os dados de exemplo.
 
-2. **Página em branco**
-   - Verifique se o PHP está instalado
-   - Verifique os logs de erro do PHP
+- Atualize todos os links sociais e de projetos.
 
-3. **Estilos não carregam**
-   - Verifique se o servidor está servindo arquivos CSS
-   - Limpe o cache do navegador
+- Adicione o arquivo real `curriculo.pdf`.
 
-4. **API não responde**
-   - Verifique se as extensões PHP estão instaladas
-   - Verifique os logs de erro
+- Confira o endereço de e-mail.
 
-## 📞 Suporte
+- Teste o menu mobile em diferentes larguras.
 
-Para dúvidas ou problemas:
-1. Verifique a documentação
-2. Consulte os logs em `logs/security.log`
-3. Verifique os resultados dos testes em `test_results.md`
+- Teste o alternador de tema claro e escuro.
 
-## 📄 Licença
+- Execute `pnpm build` para confirmar que a versão de produção é gerada sem erros.
 
-Este projeto foi desenvolvido como um portfólio pessoal. Sinta-se livre para usar como base para seus próprios projetos.
+- Verifique se as fontes, imagens e links carregam corretamente no domínio final.
 
-## 🎉 Créditos
+## Tecnologias
 
-Desenvolvido com inspiração em:
-- **Stardew Valley** - Estética e paleta de cores
-- **Jogos indie** - Design e atmosfera
-- **Comunidade web** - Melhores práticas de desenvolvimento
+- React
 
----
+- Vite
 
-**Versão**: 1.0.0  
-**Data**: Setembro 2025  
-**Status**: ✅ Completo e Funcional
+- TypeScript
 
+- HTML5 semântico
+
+- CSS3 customizado
+
+- JavaScript moderno
+
+- Google Fonts
+
+- GitHub Pages
+
+## Licença
+
+Este projeto pode ser adaptado para uso pessoal. Se você reutilizar partes significativas do código ou da identidade visual, verifique e defina a licença adequada para o seu caso.
+
+## Referências
+
+- manus_definition1a09861a0986https://vite.dev/guide/static-deploy.htmla0986Vite — Static Deploya09861manus_definition
+
+- manus_definition2a09862a0986https://docs.github.com/en/pagesa0986GitHub Pages Documentationa09862manus_definition
+
+- manus_definition3a09863a0986https://pnpm.io/cli/installa0986pnpm — Installa09863manus_definition
