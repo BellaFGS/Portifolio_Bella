@@ -1,6 +1,6 @@
 /*
  * Interações do portfólio ByteBloom.
- * Sem dependências: menu móvel, tema persistente, revelação ao rolar e feedback de links editáveis.
+ * Sem dependências: menu móvel, tema persistente, troca de logos, revelação ao rolar e feedback.
  */
 
 (() => {
@@ -11,6 +11,26 @@
   const toast = document.querySelector('.toast');
   const currentYear = document.querySelector('#current-year');
   let toastTimeout;
+
+  // Elementos das logos/favicon
+  const favicon = document.getElementById('favicon');
+  const headerLogo = document.getElementById('header-logo');
+  const footerLogo = document.getElementById('footer-logo');
+  const contactLogo = document.getElementById('contact-logo');
+
+  // Caminhos das imagens
+  const darkLogo = './images/logo_allebstrix_sf.png';
+  const lightLogo = './images/logo_allebstrix_black_sf.png';
+
+  // Função para atualizar as logos de acordo com o tema
+  const updateLogos = (isLight) => {
+    const selectedLogo = isLight ? lightLogo : darkLogo;
+
+    if (favicon) favicon.href = selectedLogo;
+    if (headerLogo) headerLogo.src = selectedLogo;
+    if (footerLogo) footerLogo.src = selectedLogo;
+    if (contactLogo) contactLogo.src = selectedLogo;
+  };
 
   const showToast = (message) => {
     if (!toast) return;
@@ -39,17 +59,22 @@
     mobileMenu.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
   }
 
+  // Aplica o tema (classe no body + acessibilidade + atualização de logos)
   const applyTheme = (isLight) => {
     body.classList.toggle('light-mode', isLight);
     if (themeButton) {
       themeButton.setAttribute('aria-pressed', String(isLight));
       themeButton.setAttribute('aria-label', isLight ? 'Ativar tema escuro' : 'Ativar tema claro');
     }
+    updateLogos(isLight);
   };
 
+  // Carrega preferência salva ou do sistema
   const savedTheme = window.localStorage.getItem('bytebloom-theme');
   const systemPrefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-  applyTheme(savedTheme ? savedTheme === 'light' : systemPrefersLight);
+  const initialIsLight = savedTheme ? savedTheme === 'light' : systemPrefersLight;
+
+  applyTheme(initialIsLight);
 
   themeButton?.addEventListener('click', () => {
     const isLight = !body.classList.contains('light-mode');
