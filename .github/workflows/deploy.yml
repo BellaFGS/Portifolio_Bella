@@ -1,4 +1,4 @@
-name: Deploy ByteBloom Portfolio to GitHub Pages
+name: 🌻 Deploy Bella Portfolio to GitHub Pages
 
 on:
   push:
@@ -16,6 +16,7 @@ concurrency:
 
 jobs:
   build-and-deploy:
+    name: 🚀 Build & Deploy Job
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -23,41 +24,41 @@ jobs:
 
     steps:
       # Step 1: Clonar o repositório
-      - name: Checkout repository
+      - name: 📥 Checkout repository
         uses: actions/checkout@v4 # ACTION 1
 
-      # Step 2: Instalar o pnpm (lê a versão exata v10 do packageManager do seu package.json)
-      - name: Setup pnpm
+      # Step 2: Instalar o pnpm
+      - name: 📦 Setup pnpm
         uses: pnpm/action-setup@v4 # ACTION 2
         with:
-          run_install: false # Desativa a leitura manual de versão via parametro
+          run_install: false
 
-      # Step 3: Configurar o Node.js 22 (atende às exigências de 2026)
-      - name: Setup Node.js
+      # Step 3: Configurar o Node.js 22
+      - name: 🟢 Setup Node.js
         uses: actions/setup-node@v4 # ACTION 3
         with:
           node-version: 22
           cache: 'pnpm'
 
       # Step 4: Instalar dependências
-      - name: Install dependencies
+      - name: 🛠️ Install dependencies
         run: pnpm install --no-frozen-lockfile
 
       # Step 5: Executar a verificação do TypeScript
-      - name: Type check
+      - name: 🔎 Type check
         run: pnpm check
 
       # Step 6: Gerar a build de produção (gera em dist/public)
-      - name: Build project
+      - name: 🏗️ Build project
         run: pnpm build
 
       # Step 7: Preparar os arquivos para publicação
-      - name: Upload artifact
+      - name: 📤 Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: 'dist/public'
 
       # Step 8: Publicar no GitHub Pages
-      - name: Deploy to GitHub Pages
+      - name: 🌐 Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
