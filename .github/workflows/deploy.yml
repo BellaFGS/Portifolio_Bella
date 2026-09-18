@@ -25,17 +25,17 @@ jobs:
     steps:
       # Step 1: Clonar o repositório
       - name: 📥 Checkout repository
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@v4
 
-      # Step 2: Instalar o pnpm (v4.0+ já suporta runners atualizados)
+      # Step 2: Instalar o pnpm
       - name: 📦 Setup pnpm
-        uses: pnpm/action-setup@v4.1.0
+        uses: pnpm/action-setup@v4
         with:
           run_install: false
 
       # Step 3: Configurar o Node.js 22
       - name: 🟢 Setup Node.js
-        uses: actions/setup-node@v4.2.0
+        uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: 'pnpm'
@@ -69,11 +69,11 @@ jobs:
 
       # Step 10: Preparar os arquivos para publicação
       - name: 📤 Upload artifact
-        uses: actions/upload-pages-artifact@v3.1.0
+        uses: actions/upload-pages-artifact@v3
         with:
           path: 'dist/public'
 
       # Step 11: Publicar no GitHub Pages
       - name: 🌐 Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4.0.5
+        uses: actions/deploy-pages@v4
