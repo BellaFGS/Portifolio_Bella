@@ -5,13 +5,11 @@ on:
     branches:
       - main # Executa a pipeline a cada push na branch main
 
-# Conceder permissões para o token do GitHub Actions ler conteúdo e publicar no Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Permite apenas um deploy simultâneo para evitar conflitos
 concurrency:
   group: 'pages'
   cancel-in-progress: true
@@ -24,38 +22,42 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Clonar/baixar o código do repositório
+      # Step 1: Clonar o repositório
       - name: Checkout repository
         uses: actions/checkout@v4 # ACTION 1
 
-      # Step 2: Instalar o pnpm atualizado (v4 suporta Node 20/22)
+      # Step 2: Instalar o pnpm (lê a versão exata v10 do packageManager do seu package.json)
       - name: Setup pnpm
         uses: pnpm/action-setup@v4 # ACTION 2
         with:
-          version: 9
+          run_install: false # Desativa a leitura manual de versão via parametro
 
-      # Step 3: Configurar o Node.js 20 (suportado atualmente)
+      # Step 3: Configurar o Node.js 22 (atende às exigências de 2026)
       - name: Setup Node.js
         uses: actions/setup-node@v4 # ACTION 3
         with:
-          node-version: 20
+          node-version: 22
           cache: 'pnpm'
 
       # Step 4: Instalar dependências
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
-      # Step 5: Gerar a build de produção (gera em dist/public)
+      # Step 5: Executar a verificação do TypeScript
+      - name: Type check
+        run: pnpm check
+
+      # Step 6: Gerar a build de produção (gera em dist/public)
       - name: Build project
         run: pnpm build
 
-      # Step 6: Configurar e preparar o artifact do GitHub Pages
+      # Step 7: Preparar os arquivos para publicação
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: 'dist/public'
 
-      # Step 7: Fazer o Deploy para o GitHub Pages
+      # Step 8: Publicar no GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
