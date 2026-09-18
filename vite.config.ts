@@ -207,8 +207,14 @@ function vitePluginStorageProxy(): Plugin {
 const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy()];
 
 export default defineConfig({
-  plugins,
+ plugins: [react()],
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './client/src/tests/setup.ts',
+  },
   base: '/Portifolio_Bella/',
+  
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "client", "src"),

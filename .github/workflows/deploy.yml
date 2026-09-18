@@ -1,4 +1,4 @@
-name: 🌻 Deploy Bella Portfolio to GitHub Pages
+name: 🎮 Deploy AllebStrix Portfolio to GitHub Pages
 
 on:
   push:
@@ -15,8 +15,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build-and-deploy:
-    name: 🚀 Build & Deploy Job
+  build-test-and-deploy:
+    name: 🚀 Build, Test & Deploy Job
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -25,17 +25,17 @@ jobs:
     steps:
       # Step 1: Clonar o repositório
       - name: 📥 Checkout repository
-        uses: actions/checkout@v4 # ACTION 1
+        uses: actions/checkout@v4
 
       # Step 2: Instalar o pnpm
       - name: 📦 Setup pnpm
-        uses: pnpm/action-setup@v4 # ACTION 2
+        uses: pnpm/action-setup@v4
         with:
           run_install: false
 
       # Step 3: Configurar o Node.js 22
       - name: 🟢 Setup Node.js
-        uses: actions/setup-node@v4 # ACTION 3
+        uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: 'pnpm'
@@ -44,21 +44,36 @@ jobs:
       - name: 🛠️ Install dependencies
         run: pnpm install --no-frozen-lockfile
 
-      # Step 5: Executar a verificação do TypeScript
+      # Step 5: Executar a verificação estática do TypeScript
       - name: 🔎 Type check
         run: pnpm check
 
-      # Step 6: Gerar a build de produção (gera em dist/public)
+      # Step 6: Executar Testes Unitários
+      - name: 🧪 Run Unit Tests
+        run: pnpm test:unit
+
+      # Step 7: Executar Testes de Integração
+      - name: 🔗 Run Integration Tests
+        run: pnpm test:integration
+
+      # Step 8: Gerar a build de produção (gera em dist/public)
       - name: 🏗️ Build project
         run: pnpm build
 
-      # Step 7: Preparar os arquivos para publicação
+      # Step 9: Executar Testes de Performance (Inicia o servidor e valida latência/carga)
+      - name: ⚡ Run Performance Tests
+        run: |
+          pnpm preview --port 3000 &
+          npx wait-on http://localhost:3000
+          pnpm test:performance
+
+      # Step 10: Preparar os arquivos para publicação
       - name: 📤 Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: 'dist/public'
 
-      # Step 8: Publicar no GitHub Pages
+      # Step 11: Publicar no GitHub Pages
       - name: 🌐 Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
