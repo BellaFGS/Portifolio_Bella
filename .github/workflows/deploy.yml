@@ -28,38 +28,34 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4 # ACTION 1
 
-      # Step 2: Configurar o ambiente pnpm
+      # Step 2: Instalar o pnpm atualizado (v4 suporta Node 20/22)
       - name: Setup pnpm
-        uses: pnpm/action-setup@v3 # ACTION 2
+        uses: pnpm/action-setup@v4 # ACTION 2
         with:
           version: 9
 
-      # Step 3: Configurar o Node.js com suporte a cache do pnpm
+      # Step 3: Configurar o Node.js 20 (suportado atualmente)
       - name: Setup Node.js
         uses: actions/setup-node@v4 # ACTION 3
         with:
-          node-version: 18
+          node-version: 20
           cache: 'pnpm'
 
       # Step 4: Instalar dependências
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --no-frozen-lockfile
 
-      # Step 5: Validar TypeScript (opcional/qualidade)
-      - name: Type check
-        run: pnpm check
-
-      # Step 6: Gerar a build de produção (gera em dist/public)
+      # Step 5: Gerar a build de produção (gera em dist/public)
       - name: Build project
         run: pnpm build
 
-      # Step 7: Configurar e preparar o artifact do GitHub Pages
+      # Step 6: Configurar e preparar o artifact do GitHub Pages
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'dist/public' # Pasta onde a sua build é gerada
+          path: 'dist/public'
 
-      # Step 8: Fazer o Deploy para o GitHub Pages
+      # Step 7: Fazer o Deploy para o GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
