@@ -36,18 +36,8 @@ A aplicação é uma interface estática executada diretamente no navegador. O p
 
 ---
 
-## 🚀 Como Executar o Projeto
+## 📓 Créditos
 
-### Requisitos Prévios
-
-Certifique-se de ter as seguintes ferramentas instaladas em sua máquina:
-
-- [Node.js](https://nodejs.org/) (versão 20 ou superior)
-- [pnpm](https://pnpm.io/) (versão 9 ou superior)
-- [Git](https://git-scm.com/)
-
-Para verificar se já possui as versões corretas:
-
-```bash
-node --version
-pnpm --version
+- [tn.a7ex](https://www.instagram.com/tn.a7ex/) - Artista
+- [Manus.ia](https://manus.im/app) - Criação base
+- [AllebStrix.dev](https://bellafgs.github.io/Portifolio_Bella/) - Desenvolvedora
