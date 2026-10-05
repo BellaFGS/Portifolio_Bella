@@ -110,8 +110,6 @@ img { display: block; max-width: 100%; }
 .learning-row { min-height: 97px; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 72px 1fr 70px 132px; align-items: center; gap: 22px; transition: padding 0.2s ease, background 0.2s ease; }
 .learning-row:hover { background: var(--panel); padding-inline: 12px; }
 .learning-thumb { width: 58px; height: 58px; display: grid; place-items: center; text-align: center; color: var(--ink); background: #f1eee4; font: 8px var(--mono); line-height: 1.15; }
-.thumb-two { background: #d7dbbc; }
-.thumb-three { background: #d4e7d8; }
 .learning-row small, .learning-row span { font: 9px var(--mono); color: var(--muted); }
 .learning-row h3 { margin: 4px 0 4px; font-size: 15px; letter-spacing: -0.03em; }
 .learning-row time { font: 9px var(--mono); color: var(--muted); }

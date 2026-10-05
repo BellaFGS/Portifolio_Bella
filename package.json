@@ -1,0 +1,17 @@
+{
+  "name": "portfolio-allebstrix",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "test:unit": "vitest run tests/unit",
+    "test:integration": "vitest run tests/integration",
+    "test:performance": "vitest run tests/performance",
+    "preview": "npx serve -l 3000 ."
+  },
+  "devDependencies": {
+    "jsdom": "^24.0.0",
+    "serve": "^14.2.1",
+    "vitest": "^1.4.0",
+    "wait-on": "^7.2.0"
+  }
+}
