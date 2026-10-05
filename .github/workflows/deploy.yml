@@ -3,7 +3,7 @@ name: 🎮 Deploy AllebStrix Portfolio to GitHub Pages
 on:
   push:
     branches:
-      - main # Executa a pipeline a cada push na branch main
+      - main
 
 permissions:
   contents: read
@@ -16,64 +16,47 @@ concurrency:
 
 jobs:
   build-test-and-deploy:
-    name: 🚀 Build, Test & Deploy Job
+    name: 🚀 Test & Deploy Job
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Clonar o repositório
       - name: 📥 Checkout repository
         uses: actions/checkout@v4
 
-      # Step 2: Instalar o pnpm
       - name: 📦 Setup pnpm
         uses: pnpm/action-setup@v4
         with:
           run_install: false
 
-      # Step 3: Configurar o Node.js 22
       - name: 🟢 Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: 'pnpm'
 
-      # Step 4: Instalar dependências
       - name: 🛠️ Install dependencies
         run: pnpm install --no-frozen-lockfile
 
-      # Step 5: Executar a verificação estática do TypeScript
-      - name: 🔎 Type check
-        run: pnpm check
-
-      # Step 6: Executar Testes Unitários
       - name: 🧪 Run Unit Tests
         run: pnpm test:unit
 
-      # Step 7: Executar Testes de Integração
       - name: 🔗 Run Integration Tests
         run: pnpm test:integration
 
-      # Step 8: Gerar a build de produção
-      - name: 🏗️ Build project
-        run: pnpm build
-
-      # Step 9: Executar Testes de Performance
       - name: ⚡ Run Performance Tests
         run: |
-          pnpm preview --port 3000 &
+          pnpm preview &
           npx wait-on http://localhost:3000
           pnpm test:performance
 
-      # Step 10: Preparar os arquivos para publicação
       - name: 📤 Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'dist/public'
+          path: '.'
 
-      # Step 11: Publicar no GitHub Pages
       - name: 🌐 Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
