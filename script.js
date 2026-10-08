@@ -103,61 +103,84 @@ if (yearElement) {
 
 
 // ==============================
-// CARROSSEL DE FERRAMENTAS
+// PAGINAÇÃO DAS FERRAMENTAS
 // ==============================
 
-const toolsCarousel = document.querySelector('.tools-grid');
-const toolsPrevButton = document.querySelector('.tools-arrow-prev');
-const toolsNextButton = document.querySelector('.tools-arrow-next');
+const toolsGrid = document.querySelector('.tools-grid');
+const toolsPagination = document.querySelector('#tools-pagination');
 
-function updateToolsArrows() {
-    if (!toolsCarousel || !toolsPrevButton || !toolsNextButton) {
-        return;
+if (toolsGrid && toolsPagination) {
+    const toolCards = Array.from(
+        toolsGrid.querySelectorAll('.tool-card')
+    );
+
+    // Ajuste a quantidade de ferramentas por página aqui (ex: 8 ou 16)
+    const toolsPerPage = 16; 
+    let currentToolsPage = 1;
+
+    function renderTools() {
+        const totalPages = Math.ceil(
+            toolCards.length / toolsPerPage
+        );
+
+        const start = (currentToolsPage - 1) * toolsPerPage;
+        const end = start + toolsPerPage;
+
+        toolCards.forEach((card) => {
+            card.style.display = 'none';
+        });
+
+        toolCards.forEach((card, index) => {
+            if (index >= start && index < end) {
+                card.style.display = '';
+            }
+        });
+
+        renderToolsPagination(totalPages);
     }
 
-    const maxScroll =
-        toolsCarousel.scrollWidth - toolsCarousel.clientWidth;
+    function renderToolsPagination(totalPages) {
+        toolsPagination.innerHTML = '';
 
-    toolsPrevButton.disabled =
-        toolsCarousel.scrollLeft <= 5;
+        if (totalPages <= 1) {
+            return;
+        }
 
-    toolsNextButton.disabled =
-        toolsCarousel.scrollLeft >= maxScroll - 5;
+        for (let page = 1; page <= totalPages; page++) {
+            const button = document.createElement('button');
+
+            button.type = 'button';
+            button.textContent = page;
+
+            button.setAttribute(
+                'aria-label',
+                `Ir para a página ${page}`
+            );
+
+            if (page === currentToolsPage) {
+                button.classList.add('active');
+                button.setAttribute(
+                    'aria-current',
+                    'page'
+                );
+            }
+
+            button.addEventListener('click', () => {
+                currentToolsPage = page;
+                renderTools();
+
+                toolsGrid.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+
+            toolsPagination.appendChild(button);
+        }
+    }
+
+    renderTools();
 }
-
-function scrollTools(direction) {
-    if (!toolsCarousel) {
-        return;
-    }
-
-    const card = toolsCarousel.querySelector('.tool-card');
-
-    if (!card) {
-        return;
-    }
-
-    const gap = 9;
-    const amount = (card.offsetWidth + gap) * 3;
-
-    toolsCarousel.scrollBy({
-        left: direction * amount,
-        behavior: 'smooth'
-    });
-}
-
-toolsPrevButton?.addEventListener('click', () => {
-    scrollTools(-1);
-});
-
-toolsNextButton?.addEventListener('click', () => {
-    scrollTools(1);
-});
-
-toolsCarousel?.addEventListener('scroll', updateToolsArrows);
-window.addEventListener('resize', updateToolsArrows);
-
-updateToolsArrows();
-
 
 // ==============================
 // FILTRO E PAGINAÇÃO DOS CERTIFICADOS
