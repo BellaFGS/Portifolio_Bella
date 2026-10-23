@@ -129,8 +129,8 @@ img { display: block; max-width: 100%; }
 .project-info p::-webkit-scrollbar-thumb:hover { background: #ffffffbd; }
 .project-year { font: 9px var(--mono); color: var(--yellow); white-space: nowrap; }
 .project-meta { display: flex; justify-content: space-between; border-top: 1px solid var(--line); padding: 10px 16px; font: 9px var(--mono); color: var(--muted); }
-.project-meta span:first-child { color: var(--paper); display: flex; }
-.project-meta span a { margin-right: 10px; display: flex; align-items: center; }
+.project-meta span:first-child { color: var(--paper); display: flex; flex-direction: column; }
+.project-meta span a { margin-right: 10px; display: flex; align-items: center; margin: 5px 0px; }
 .project-meta span a:hover { transform: scale(1.015); opacity: 0.8; }
 .project-meta span a img{ margin-right: 2px; }
 
